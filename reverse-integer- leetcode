@@ -1,0 +1,37 @@
+c++
+
+class Solution {
+public:
+    int reverse(int x) {
+        
+        if(x>=INT_MAX || x<=INT_MIN)
+        {
+            return 0;
+        }
+
+        long revv=0;
+        int num=x;
+        
+        if(num<0)
+        {
+            num=num*(-1);
+        }
+        while(num>0)
+        {
+            long rev;
+            rev=num%10;
+            revv=(revv*10)+rev;
+            num=num/10;
+            if(revv>=INT_MAX)
+            {
+                return 0;
+            }
+        }
+        if(x<0)
+        {
+            revv=revv*(-1);
+        }
+        return revv;
+        
+    }
+};
