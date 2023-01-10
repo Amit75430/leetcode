@@ -1,0 +1,25 @@
+C++
+
+class Solution {
+public:
+    bool isPalindrome(int x) {
+        long long num=x,rev=0;
+        while(num>0){
+
+        
+          long y=num%10;
+            
+            rev =(rev*10)+y;
+            num=num/10;
+
+        }
+        if(x==rev)
+        {
+            return true;
+        }
+        return false;
+    }
+        
+        
+    
+};
