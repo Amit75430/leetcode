@@ -1,0 +1,18 @@
+c++
+
+class Solution {
+public:
+    string convertToTitle(int columnNumber) {
+        string ans;
+        while(columnNumber>0)
+        {
+            columnNumber -=1;
+            int a= columnNumber%26;
+            columnNumber/=26;
+            ans.push_back(a+'A');
+        }
+        reverse(ans.begin(),ans.end());
+        return ans;
+        
+    }
+};
