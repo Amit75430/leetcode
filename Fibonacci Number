@@ -1,0 +1,49 @@
+lass Solution {
+public:
+    int fib(int n) {
+        if(n==0)
+        {
+            return 0;
+        }
+        if(n==1)
+        {
+            return 1;
+        }
+        int res=0,a=0,b=1;
+        for(int i=2; i<=n; i++)
+        {
+            res=a+b;
+            a=b;
+            b=res;
+        }
+        return res;
+    }
+        
+};
+
+Using Recurrsion
+
+lass Solution {
+public:
+    int fib(int n) {
+        if(n==0)
+        {
+            return 0;
+        }
+        if(n==1)
+        {
+            return 1;
+        }
+          if(n==2)
+        {
+            return 1;
+        }
+        if(n==3)
+        {
+            return 2;
+        }
+      
+        return fib(n-1)+fib(n-2);
+        
+    }
+};
