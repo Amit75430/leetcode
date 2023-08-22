@@ -1,0 +1,25 @@
+class Solution {
+public:
+    int pivotIndex(vector<int>& nums) {       
+        int total=0,sl=0,i=0;
+      //  int sl=0;
+        for(int i=0;i<nums.size();i++)
+        {
+            total +=nums[i]; //28
+        }
+        
+        while(i<nums.size())
+        {
+            total -=nums[i]; //27->20->17->11
+            if(total==sl)
+            {
+                return i;
+            }
+            sl +=nums[i];
+            i++;
+        }
+        return -1;
+       
+    
+    }
+};
