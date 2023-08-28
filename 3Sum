@@ -1,0 +1,38 @@
+class Solution {
+public:
+    vector<vector<int>> threeSum(vector<int>& nums) {
+        
+        set<vector<int>>set;
+        vector<vector<int>> result;
+        int size=nums.size();
+        sort(nums.begin(),nums.end());
+       // -4,-1,-1,0,1,2
+        for(int i=1;i<size;i++)
+        {
+            int low=i-1; int high=size-1;
+            while(low<high)
+            {
+                if(nums[low]+nums[i]+nums[high]<0)
+                {
+                    low++;
+                }
+                else if(nums[low]+nums[i]+nums[high]>0)
+                {
+                    high--;
+                }
+                else
+                {
+                    set.insert({nums[low],nums[i],nums[high]});
+                    low++;high--;
+
+                }
+            }
+        }
+        for(auto i : set)
+        {
+            result.push_back(i);
+        }
+        return result;
+        
+    }
+};
