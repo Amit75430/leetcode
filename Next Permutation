@@ -1,0 +1,59 @@
+-----------------------------------------------using function as "next_permutation(nums.begin(),nums.end()) -------------------------------------------------------
+class Solution {
+public:
+    void nextPermutation(vector<int>& nums) {
+        next_permutation(nums.begin(),nums.end());
+    }
+};
+
+-------------------------------------------------- without function ---------------------------------------------------------------------------------
+class Solution {
+public:
+ void nextPermutation(vector<int>& nums) {
+        int initial1=-1; int initial2=-1;
+        for(int i=nums.size()-2; i>=0; i--)
+        {
+            if(nums[i]<nums[i+1])
+            {
+                initial1=i;
+                break;
+
+            }
+        }
+        if(initial1==-1)
+        {
+            reverse(nums,0);
+        }
+        else
+        {
+            for(int i=nums.size()-1;i>=0;i--)
+            {
+                if(nums[initial1]<nums[i])
+                {
+                    initial2=i;
+                    break;
+                }
+            }
+        
+        swap(nums,initial1,initial2);
+        reverse(nums,initial1+1);
+        }
+   }
+   void swap(vector<int>& nums,int i,int j)
+        {
+            int temp=nums[i];
+            nums[i]=nums[j];
+            nums[j]=temp;
+        }
+        void reverse(vector<int>& nums, int start)
+        {
+            int i=start;
+            int j=nums.size()-1;
+            while(i<j)
+            {
+                swap(nums,i,j);
+                i++;
+                j--;
+            }
+        }
+};
