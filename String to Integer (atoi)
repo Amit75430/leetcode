@@ -1,0 +1,43 @@
+class Solution {
+public:
+    int myAtoi(string s) {
+     double num=0;
+     int i=0;
+     int size=s.size();
+     while(s[i]==' ')
+     {
+         i++;
+     }
+     bool positive = s[i]=='+';
+     bool negative =s[i]=='-';
+     positive ==true ? i++ : i;
+     negative ==true ? i++ : i;
+    //  if(s[i]=='-' )
+    //  {
+    //      i++;
+    //  }
+    //  if(s[i]=='+')
+    //  {
+    //      i++;
+    //  }
+     while(i<size && s[i]>='0' && s[i]<='9') // "       -76 lkjaslkdjl" //48-57
+     {
+         num= num*10+(s[i]-'0'); //55-48=7=7 -> 54-48=6= 7*10+6=76
+         i++;
+     }
+     if(negative)
+     {
+         num=(num*-1); //76*-1=-76
+     }
+
+     if(negative && positive)
+     {
+         return 0;
+     }
+     num = (num>INT_MAX) ? INT_MAX : num;
+     num = (num<INT_MIN) ? INT_MIN : num;
+     
+     return num;
+        
+    }
+};
