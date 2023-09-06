@@ -1,0 +1,59 @@
+class Solution {
+public:
+    void gameOfLife(vector<vector<int>>& board) {
+        int row=board.size();
+        int col=board[0].size();
+        for(int i=0;i<row;i++)
+        {
+            for(int j=0;j<col;j++)
+            {
+                int neighbour=0;
+                for(int m=i-1;m<i+2;m++)
+                {
+                    for(int n=j-1;n<j+2;n++)
+                    {
+                        if(m==i && n==j)
+                        {
+                            continue;
+                        }
+                        if(m>=0 && m<row && n>=0 && n<col && board[m][n]%2==1)
+                        {
+                            neighbour++;
+                        }
+                    }
+                }
+                if(board[i][j]%2==1)
+                {
+                    if(neighbour==2 || neighbour==3)
+                    {
+                        board[i][j]+=2;
+                    }
+                }
+                else
+                {
+                    if(neighbour==3)
+                    {
+                        board[i][j]+=2;
+                    }
+                }
+                
+                            
+            }
+        }
+        for(int i=0;i<row;i++)
+        {
+            for(int j=0;j<col;j++)
+            {
+                if(board[i][j]>=2)
+                {
+                    board[i][j]=1;
+                }
+                else
+                {
+                    board[i][j]=0;
+                }
+            }
+        }
+        
+    }
+};
