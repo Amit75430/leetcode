@@ -1,0 +1,31 @@
+class Solution {
+public:
+    int subarraysDivByK(vector<int>& nums, int k) {
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+        unordered_map<int,int>mp;
+        int pre=0;
+        int count=0;
+        mp[0]=1;
+        for(int i=0;i<nums.size();i++)
+        {
+            pre+=nums[i];
+            if(pre<0)
+            {
+               // pre+=ceil(abs(pre)*1.0/k)*k;//  we can use this one too
+                pre=(k-((-1*pre)%k))%k;
+            }
+            pre%=k;
+            if(mp.find(pre)!=mp.end())
+            {
+                count+=mp[pre];
+            }
+            mp[pre]++;
+        }
+        return count;
+
+
+        
+        
+    }
+};
