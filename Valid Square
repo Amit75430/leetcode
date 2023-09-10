@@ -1,0 +1,37 @@
+class Solution {
+public:
+    double distance(vector<int>&s1, vector<int>&s2)
+    {
+        return (((s1[0]-s2[0])*(s1[0]-s2[0])) + ((s1[1]-s2[1]) * (s1[1]-s2[1]))); // calculate Euclidean distance bt not doing square root.
+    }
+    bool validSquare(vector<int>& p1, vector<int>& p2, vector<int>& p3, vector<int>& p4) {
+        double d1= distance(p4,p3);
+        double d2= distance(p4,p2);
+        double d3= distance(p4,p1);
+        if(d1==d2 && d2==d3)
+        { return false; }
+        int same[2]={0};
+        if(d1==d2)
+        {
+            double a1= distance(p3,p2);
+            double a2= distance(p1,p4);
+            if(a1==a2 && a1==2*d1) return true; // 2 not sqrt of 2 bcoz we didn't do the sqrt in euclidean distance.
+            return false;
+        }
+        else if(d1==d3)
+        {
+            double a1= distance(p3,p1);
+            double a2= distance(p2,p4);
+            if(a1==a2 && a1==2*d1) return true; // 2 not sqrt of 2 bcoz we didn't do the sqrt in euclidean distance.
+            return false;
+        }
+        else if(d2==d3)
+        {
+            double a1= distance(p1,p2);
+            double a2= distance(p3,p4);
+            if(a1==a2 && a1==2*d2) return true; // 2 not sqrt of 2 bcoz we didn't do the sqrt in euclidean distance.
+            return false;
+        }
+        return false; // bool need return type
+    }
+};
