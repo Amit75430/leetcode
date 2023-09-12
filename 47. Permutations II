@@ -1,0 +1,43 @@
+class Solution {
+public:
+    int size;
+    set<vector<int>> result;
+    void per(vector<int>& nums, int i)
+    {
+        if(i==size)
+        {
+            result.insert(nums);
+            return;
+        }
+        per(nums, i+1);
+        for(int j=i+1;j<size;j++)
+        {
+            //swap(nums[i],nums[j]);
+            if(nums[i]==nums[j])
+            {
+                continue;
+            }
+            
+            int temp=nums[i];
+            nums[i]=nums[j];
+            nums[j]=temp;
+            per(nums, i+1);
+            int tem=nums[i];
+            nums[i]=nums[j];
+            nums[j]=tem;
+            
+        }
+    }
+
+    vector<vector<int>> permuteUnique(vector<int>& nums) {
+        size=nums.size();
+        per(nums,0);
+        vector<vector<int>> ans;
+        for(auto i:result)
+        {
+            ans.push_back(i);
+        }
+        return ans;
+        
+    }
+};
