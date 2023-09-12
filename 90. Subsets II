@@ -1,0 +1,31 @@
+class Solution {
+public:
+    vector<vector<int>> result;
+    set<vector<int>>s; 
+    
+    void sub(vector<int>& nums, int size,int i, vector<int> &vec)
+    {
+        if(i==size)
+        {
+            s.insert(vec);
+            return;
+        }
+        sub(nums,size,i+1,vec); 
+        vec.push_back(nums[i]);
+        sub(nums,size,i+1,vec);
+        vec.pop_back();
+        return;
+    }
+    vector<vector<int>> subsetsWithDup(vector<int>& nums) {
+        int size=nums.size(); 
+        vector<int>vec;
+        sort(nums.begin(),nums.end());
+        sub(nums,size,0,vec);
+        for(auto i:s)
+        {
+            result.push_back(i);
+        }
+        return result;
+        
+    }
+};
